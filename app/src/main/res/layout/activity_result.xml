@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        android:background="@color/colorPrimary"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ResultActivity">
+
+    <RelativeLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/space"
+            android:paddingEnd="@dimen/space"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+        <RelativeLayout android:id="@+id/result_back" android:layout_width="@dimen/space_x5" android:layout_height="match_parent">
+            <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
+                       android:src="@drawable/ic_baseline_arrow_back_24_white"/>
+        </RelativeLayout>
+
+        <TextView android:layout_toRightOf="@id/result_back" android:layout_marginStart="@dimen/space_x2" android:layout_width="wrap_content"
+                  android:layout_height="wrap_content" android:layout_centerVertical="true"
+                  android:text="Hasil Konsultasi" android:textStyle="bold" android:textColor="@color/colorWhite"
+                  android:textSize="@dimen/text_20"/>
+
+    </RelativeLayout>
+    <RelativeLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/background_bot"
+                  android:layout_marginTop="?attr/actionBarSize" android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+
+        <RelativeLayout android:gravity="center" android:id="@+id/apsv_result_layout" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <devlight.io.library.ArcProgressStackView
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/apsv_result"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    app:apsv_animated="true"
+                    app:apsv_animation_duration="1000"
+                    app:apsv_dragged="true"
+                    app:apsv_draw_width="15%"
+                    app:apsv_indicator_orientation="vertical"
+                    app:apsv_interpolator="@android:anim/bounce_interpolator"
+                    app:apsv_leveled="true"
+                    app:apsv_model_bg_enabled="true"
+                    app:apsv_model_offset="5dp"
+                    app:apsv_preview_bg="#fff"
+                    app:apsv_preview_colors="@array/default_preview"
+                    app:apsv_rounded="false"
+                    app:apsv_shadow_angle="90"
+                    app:apsv_shadow_color="@color/colorAccent"
+                    app:apsv_shadow_distance="5dp"
+                    app:apsv_shadow_radius="10dp"
+                    app:apsv_shadowed="true"
+                    app:apsv_start_angle="270"
+                    app:apsv_sweep_angle="360"
+                    app:apsv_text_color="#fff"
+                    app:apsv_typeface="fonts/agency.ttf"/>
+
+            <TextView android:id="@+id/result_tv_persen" android:layout_centerInParent="true" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="%" android:gravity="center" android:fontFamily="@font/nunito_extrabold"
+                      android:textSize="@dimen/text_32"/>
+        </RelativeLayout>
+
+        <LinearLayout android:layout_margin="@dimen/space_x5" android:layout_below="@+id/apsv_result_layout" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:id="@+id/result_kalkulasi"
+                          android:background="@drawable/gradien" android:layout_width="match_parent"
+                          android:layout_height="@dimen/space_x5_half">
+
+                <TextView  android:layout_width="match_parent" android:layout_height="match_parent"
+                           android:text="Hasil Kalkulasi" android:gravity="center" android:fontFamily="@font/nunito_extrabold"
+                           android:textColor="@color/colorWhite" android:textSize="@dimen/text_16"/>
+            </LinearLayout>
+            <LinearLayout android:layout_marginTop="@dimen/space_x2" android:id="@+id/result_video"
+                          android:background="@drawable/gradien" android:layout_width="match_parent"
+                          android:layout_height="@dimen/space_x5_half">
+
+                <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                          android:text="Nonton Video" android:gravity="center"
+                          android:fontFamily="@font/nunito_extrabold"
+                          android:textColor="@color/colorWhite" android:textSize="@dimen/text_16"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <com.github.ybq.android.spinkit.SpinKitView
+                android:visibility="gone"
+                android:layout_margin="16dp"
+                android:id="@+id/spin_kit_result"
+                style="@style/SpinKitView.Large.Circle"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
+                app:SpinKit_Color="@color/colorAccent"/>
+    </RelativeLayout>
+</RelativeLayout>

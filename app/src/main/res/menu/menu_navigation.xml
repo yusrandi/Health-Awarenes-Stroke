@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/home"
+          android:title="Home"
+          android:icon="@mipmap/ic_home_list"/>
+    <item android:id="@+id/tutor"
+          android:title="Tutorial"
+          android:icon="@mipmap/ic_tutor"/>
+    <item android:id="@+id/research"
+          android:title="Research"
+          android:icon="@mipmap/research"/>
+    <item android:id="@+id/manage"
+          android:title="Manage"
+          android:icon="@mipmap/manage"/>
+    <item android:id="@+id/fast"
+          android:title="Fast"
+          android:icon="@mipmap/fast"/>
+</menu>

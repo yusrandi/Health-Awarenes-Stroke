@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        android:background="@color/colorPrimary"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DoctorManageGejalaActivity">
+
+    <RelativeLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/space"
+            android:paddingEnd="@dimen/space"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+        <RelativeLayout android:id="@+id/doctor_manage_gejala_back" android:layout_width="@dimen/space_x5"
+                        android:layout_height="match_parent">
+            <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
+                       android:src="@drawable/ic_baseline_arrow_back_24_white"/>
+        </RelativeLayout>
+
+        <TextView android:id="@+id/doctor_manage_title" android:layout_toRightOf="@id/doctor_manage_gejala_back" android:layout_marginStart="@dimen/space_x2"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content" android:layout_centerVertical="true"
+                  android:text="Kelola Gejala" android:textStyle="bold" android:textColor="@color/colorWhite"
+                  android:textSize="@dimen/text_20"/>
+    </RelativeLayout>
+    <RelativeLayout android:orientation="vertical" android:background="@drawable/background_bot"
+                    android:layout_marginTop="?attr/actionBarSize" android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+                android:layout_marginBottom="@dimen/space_x2"
+                android:layout_width="match_parent" android:layout_height="match_parent">
+
+            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+
+                <TextView
+                        android:id="@+id/doctor_manage_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:layout_centerVertical="true"
+                        android:text="" android:textStyle="bold" android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_18"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/doctor_manage_gejala_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="@dimen/space"/>
+
+                <Button
+                        android:visibility="gone"
+                        android:layout_gravity="start"
+                        android:id="@+id/doctor_manage_next"
+                        android:textColor="#fff"
+                        android:text="Next"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/gradien"
+                        android:layout_width="@dimen/space_x20"
+                        android:layout_height="40dp"/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+            android:visibility="gone"
+            android:layout_margin="16dp"
+            android:id="@+id/spin_kit_doctor_manage_gejala"
+            style="@style/SpinKitView.Large.Circle"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            app:SpinKit_Color="@color/colorAccent"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/doctor_manage_gejala_fab"
+            android:layout_margin="@dimen/space"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="normal"
+            app:rippleColor="@color/colorAccent"
+            app:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_baseline_add_24"/>
+</RelativeLayout>

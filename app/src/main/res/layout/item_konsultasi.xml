@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:padding="@dimen/space"
+        android:layout_height="wrap_content">
+
+    <TextView android:id="@+id/item_konsul_gejala" android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="apakah Anda mengkonsumsi Daging Olahan (Corned beef) seperti sosis dan nugget ?"
+              android:textSize="@dimen/text_16"/>
+
+
+    <com.skydoves.powerspinner.PowerSpinnerView
+            android:layout_marginTop="@dimen/space"
+            android:background="@drawable/background_white"
+            android:id="@+id/item_konsul_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?attr/selectableItemBackground"
+            android:hint="Pilih Jawaban ?"
+            app:fontFamily="@font/nunito_reguler"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="14sp"
+            app:spinner_popup_background="@color/colorWhite"
+            app:spinner_arrow_gravity="end"
+            app:spinner_arrow_padding="8dp"
+            app:spinner_divider_show="false"
+            app:spinner_popup_animation="fade"
+            app:spinner_popup_elevation="14dp"
+            tools:ignore="HardcodedText,UnusedAttribute"/>
+
+    <LinearLayout android:visibility="gone" android:id="@+id/item_konsul_aksi" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+
+        <com.skydoves.powerspinner.PowerSpinnerView
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/space"
+                android:background="@drawable/background_white"
+                android:id="@+id/item_konsul_spinner_cf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:foreground="?attr/selectableItemBackground"
+                android:hint="Pilih Kategori CF"
+                app:fontFamily="@font/nunito_reguler"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:textSize="14sp"
+                app:spinner_item_array="@array/kategori"
+                app:spinner_popup_background="@color/colorWhite"
+                app:spinner_arrow_gravity="end"
+                app:spinner_arrow_padding="8dp"
+                app:spinner_divider_show="false"
+                app:spinner_popup_animation="fade"
+                app:spinner_popup_elevation="14dp"
+                tools:ignore="HardcodedText,UnusedAttribute"/>
+
+        <LinearLayout  android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="@dimen/space_x5">
+            <TextView android:id="@+id/item_konsul_aksi_cancel" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="cancel" android:gravity="center" android:fontFamily="@font/nunito_extrabold" android:textSize="@dimen/text_18" android:layout_marginStart="@dimen/space" android:textStyle="bold" android:textColor="@color/colorAccent"/>
+            <TextView android:id="@+id/item_konsul_aksi_update" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="update" android:gravity="center" android:fontFamily="@font/nunito_extrabold" android:textSize="@dimen/text_18" android:layout_marginStart="@dimen/space_x2" android:textStyle="bold" android:textColor="@color/colorPrimaryDark"/>
+            <TextView android:id="@+id/item_konsul_aksi_delete" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="delete" android:gravity="center" android:fontFamily="@font/nunito_extrabold" android:textSize="@dimen/text_18" android:layout_marginStart="@dimen/space_x2" android:textStyle="bold" android:textColor="@color/colorPrimaryDark"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <View
+            android:layout_marginTop="@dimen/space"
+            android:layout_marginBottom="@dimen/space"
+            android:background="@drawable/gradien"
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"/>
+
+</LinearLayout>

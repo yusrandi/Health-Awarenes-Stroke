@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        android:background="@color/colorPrimaryDark"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".StepManageActivity">
+
+    <LinearLayout
+            android:padding="@dimen/space_x2"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_x10">
+
+        <TextView android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Manage" android:textColor="@color/colorWhite" android:fontFamily="@font/nunito_extrabold" android:textSize="@dimen/text_24"/>
+    </LinearLayout>
+    <RelativeLayout
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/space_x10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_bot">
+
+
+        <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:padding="@dimen/space_x5" android:orientation="vertical" android:gravity="center" android:layout_centerInParent="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+
+                <RelativeLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
+
+                    <devlight.io.library.ArcProgressStackView
+                            android:id="@+id/step_manage_apsv"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            app:apsv_animated="true"
+                            app:apsv_animation_duration="1000"
+                            app:apsv_dragged="true"
+                            app:apsv_draw_width="15%"
+                            app:apsv_indicator_orientation="vertical"
+                            app:apsv_interpolator="@android:anim/bounce_interpolator"
+                            app:apsv_leveled="true"
+                            app:apsv_model_bg_enabled="true"
+                            app:apsv_model_offset="5dp"
+                            app:apsv_preview_bg="#fff"
+                            app:apsv_preview_colors="@array/default_preview"
+                            app:apsv_rounded="false"
+                            app:apsv_shadow_angle="90"
+                            app:apsv_shadow_color="@color/colorAccent"
+                            app:apsv_shadow_distance="5dp"
+                            app:apsv_shadow_radius="10dp"
+                            app:apsv_shadowed="true"
+                            app:apsv_start_angle="270"
+                            app:apsv_sweep_angle="360"
+                            app:apsv_text_color="#fff"
+                            app:apsv_typeface="fonts/agency.ttf" />
+
+                    <LinearLayout android:gravity="center" android:layout_centerInParent="true" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <TextView android:id="@+id/step_manage_persen"  android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                  android:text="100" android:gravity="center" android:fontFamily="@font/nunito_extrabold"
+                                  android:textSize="@dimen/text_32"/>
+                        <TextView android:id="@+id/step_manage_persen_label"
+                                  android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                  android:text="Pertanyaan"  android:fontFamily="@font/nunito_extrabold"
+                                  android:textSize="@dimen/text_14"/>
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+
+                <LinearLayout android:id="@+id/step_manage_video" android:layout_marginTop="@dimen/space_x5" android:background="@drawable/gradien" android:layout_width="match_parent" android:layout_height="@dimen/space_x5_half">
+
+                    <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="Watch Video" android:gravity="center" android:fontFamily="@font/nunito_extrabold" android:textColor="@color/colorWhite" android:textSize="@dimen/text_16"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/step_manage_doctor" android:layout_marginTop="@dimen/space_x2" android:background="@drawable/gradien" android:layout_width="match_parent"
+                              android:layout_height="@dimen/space_x5_half">
+
+                    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                              android:text="Doctor Form" android:gravity="center"
+                              android:fontFamily="@font/nunito_extrabold" android:textColor="@color/colorWhite"
+                              android:textSize="@dimen/text_16"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/step_manage_patient" android:layout_marginTop="@dimen/space_x2" android:background="@drawable/gradien"
+                              android:layout_width="match_parent"
+                              android:layout_height="@dimen/space_x5_half">
+
+                    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                              android:text="Patient Form" android:gravity="center"
+                              android:fontFamily="@font/nunito_extrabold" android:textColor="@color/colorWhite"
+                              android:textSize="@dimen/text_16"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.github.ybq.android.spinkit.SpinKitView
+                android:visibility="gone"
+                android:layout_margin="16dp"
+                android:id="@+id/spin_kit_step_manage"
+                style="@style/SpinKitView.Large.Circle"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
+                app:SpinKit_Color="@color/colorAccent"/>
+    </RelativeLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/manage_navigation"
+            android:background="@color/colorWhite"
+            app:itemBackground="@color/colorWhite"
+            app:itemTextColor="@drawable/selector"
+            app:itemIconTint="@drawable/selector"
+            android:layout_alignParentBottom="true"
+            app:elevation="@dimen/space_x20"
+            app:labelVisibilityMode="auto"
+            app:itemIconSize="@dimen/space_x4"
+            app:itemTextAppearanceActive="@dimen/text_8"
+            app:itemTextAppearanceInactive="@dimen/text_8"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:menu="@menu/menu_navigation">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</RelativeLayout>
