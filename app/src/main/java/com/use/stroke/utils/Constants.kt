@@ -6,7 +6,7 @@ class Constants {
 
 
     companion object{
-//        const val API = "http://192.168.43.43/stroke/public/api/user/"
+//        const val BASE_API = "http://192.168.43.43/stroke/public"
 
         const val BASE_API = "http://primarystrokeapp.com"
         const val API = "$BASE_API/api/user/"
@@ -30,13 +30,21 @@ class Constants {
             return pref.getString("user", "undefined")
         }
 
+        fun getPhoneNumber(context: Context): String? {
 
-        fun setAuth(context : Context, id:Int, user:String, role: Int){
+            val pref = context.getSharedPreferences("USER", Context.MODE_PRIVATE)
+
+            return pref.getString("phone", "undefined")
+        }
+
+
+        fun setAuth(context : Context, id:Int, user:String, role: Int, phone: String){
             val pref = context.getSharedPreferences("USER", Context.MODE_PRIVATE)
             pref.edit().apply {
                 putBoolean("LOGIN", true)
                 putInt("id", id)
                 putString("user", user)
+                putString("phone", phone)
                 putInt("role", role)
                 apply()
             }

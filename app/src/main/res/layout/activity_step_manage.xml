@@ -56,10 +56,10 @@
                             app:apsv_typeface="fonts/agency.ttf" />
 
                     <LinearLayout android:gravity="center" android:layout_centerInParent="true" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                        <TextView android:id="@+id/step_manage_persen"  android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                  android:text="100" android:gravity="center" android:fontFamily="@font/nunito_extrabold"
+                        <TextView android:textColor="@color/colorFont" android:id="@+id/step_manage_persen"  android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                  android:text="..." android:gravity="center" android:fontFamily="@font/nunito_extrabold"
                                   android:textSize="@dimen/text_32"/>
-                        <TextView android:id="@+id/step_manage_persen_label"
+                        <TextView android:textColor="@color/colorPrimaryDark" android:id="@+id/step_manage_persen_label"
                                   android:layout_width="wrap_content" android:layout_height="wrap_content"
                                   android:text="Pertanyaan"  android:fontFamily="@font/nunito_extrabold"
                                   android:textSize="@dimen/text_14"/>
@@ -70,13 +70,13 @@
 
                 <LinearLayout android:id="@+id/step_manage_video" android:layout_marginTop="@dimen/space_x5" android:background="@drawable/gradien" android:layout_width="match_parent" android:layout_height="@dimen/space_x5_half">
 
-                    <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="Watch Video" android:gravity="center" android:fontFamily="@font/nunito_extrabold" android:textColor="@color/colorWhite" android:textSize="@dimen/text_16"/>
+                    <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="Menonton Video Edukasi" android:gravity="center" android:fontFamily="@font/nunito_extrabold" android:textColor="@color/colorWhite" android:textSize="@dimen/text_16"/>
                 </LinearLayout>
                 <LinearLayout android:id="@+id/step_manage_doctor" android:layout_marginTop="@dimen/space_x2" android:background="@drawable/gradien" android:layout_width="match_parent"
                               android:layout_height="@dimen/space_x5_half">
 
                     <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-                              android:text="Doctor Form" android:gravity="center"
+                              android:text="Form Dokter" android:gravity="center"
                               android:fontFamily="@font/nunito_extrabold" android:textColor="@color/colorWhite"
                               android:textSize="@dimen/text_16"/>
                 </LinearLayout>
@@ -85,7 +85,17 @@
                               android:layout_height="@dimen/space_x5_half">
 
                     <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-                              android:text="Patient Form" android:gravity="center"
+                              android:text="Form Pasien Konsultasi" android:gravity="center"
+                              android:fontFamily="@font/nunito_extrabold" android:textColor="@color/colorWhite"
+                              android:textSize="@dimen/text_16"/>
+                </LinearLayout>
+                <LinearLayout android:visibility="gone" android:id="@+id/step_manage_pendamping_form" android:layout_marginTop="@dimen/space_x2"
+                              android:background="@drawable/gradien"
+                              android:layout_width="match_parent"
+                              android:layout_height="@dimen/space_x5_half">
+
+                    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                              android:text="Form Kuisioner Pendamping" android:gravity="center"
                               android:fontFamily="@font/nunito_extrabold" android:textColor="@color/colorWhite"
                               android:textSize="@dimen/text_16"/>
                 </LinearLayout>

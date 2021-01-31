@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.use.stroke.models.Laporan
+import com.use.stroke.models.Research
 import com.use.stroke.utils.SingleLiveEvent
 import com.use.stroke.utils.WrappedListResponse
 import com.use.stroke.utils.WrappedResponse
@@ -56,7 +57,7 @@ class LaporanViewModel : ViewModel() {
         })
     }
 
-    fun fetchLaporansByUser(id:Int) {
+    fun fetchLaporansByUser(id:String) {
         state.value = LaporanState.IsLoading(true)
         api.fetchLaporansByUser(id).enqueue(object : Callback<WrappedListResponse<Laporan>> {
             override fun onResponse(
@@ -77,6 +78,8 @@ class LaporanViewModel : ViewModel() {
                     if (body.responsecode.equals("1")) {
                         val data = body.responsedata
                         Laporans.postValue(data)
+                        state.value = LaporanState.IsLoad(data as MutableList<Laporan>)
+
                     }
                 } else {
                     state.value = LaporanState.IsError("Terjadi kesalahan. Gagal mendapatkan response")
@@ -135,5 +138,7 @@ sealed class LaporanState {
     data class IsLoading(var state: Boolean = false) : LaporanState()
     data class IsSuccess(var msg: String) : LaporanState()
     data class IsError(var err: String) : LaporanState()
+    data class IsLoad(var data: MutableList<Laporan>) : LaporanState()
+
 
 }

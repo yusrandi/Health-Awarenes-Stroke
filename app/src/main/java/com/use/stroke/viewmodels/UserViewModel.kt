@@ -37,7 +37,7 @@ class UserViewModel : ViewModel() {
 
                     if (body.responsecode.equals("1")) {
                         state.value = UserState.Success(body.responsedata!!.id!!, body.responsedata!!.name!!,
-                            body.responsedata!!.email,
+                            body.responsedata!!.phone,
                             body.responsedata!!.role
                         )
                     } else {
@@ -55,16 +55,13 @@ class UserViewModel : ViewModel() {
         })
 
     }
-    fun register(user: User, user1: User, doctorId:Int) {
+    fun register(user: User, doctorId:Int) {
         state.value = UserState.IsLoading(true)
         api.register(
             user.name!!,
-            user.email,
+            user.phone,
             user.role,
             user.password,
-            user1.name!!,
-            user1.email,
-            user1.password,
             doctorId
         ).enqueue(object : Callback<WrappedResponse<User>> {
             override fun onFailure(call: Call<WrappedResponse<User>>, t: Throwable) {
@@ -76,7 +73,7 @@ class UserViewModel : ViewModel() {
                     val body = response.body() as WrappedResponse<User>
                     if (body.responsecode.equals("1")) {
                         state.value = UserState.Success(body.responsedata!!.id!!, body.responsedata!!.name!!,
-                            body.responsedata!!.email,
+                            body.responsedata!!.phone,
                             body.responsedata!!.role
                         )
                     } else {

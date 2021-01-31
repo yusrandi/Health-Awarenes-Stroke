@@ -55,13 +55,21 @@ class StepPembimbingFastActivity : AppCompatActivity(), BottomNavigationView.OnN
             }
         })
         initRecyclerView()
+
+        if(Constants.getRole(this) == 2){
+            pembimbing_fast_layout_cari.visibility = View.VISIBLE
+            pembimbing_fast_search.setOnClickListener {
+                val id = pembimbing_fast_no.text.toString()
+                if(id.isEmpty()) showMsg("Harap Mengisi Nomor Hp Pasien") else laporanViewModel.fetchLaporansByUser(id)
+            }
+        }
     }
 
     override fun onStart() {
         super.onStart()
         val userId = Constants.getID(this)
         Log.e(TAG, "UserId $userId")
-        laporanViewModel.fetchLaporansByUser(userId)
+        laporanViewModel.fetchLaporansByUser(userId.toString())
 
     }
 

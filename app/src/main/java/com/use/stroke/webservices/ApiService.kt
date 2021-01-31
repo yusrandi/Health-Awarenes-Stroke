@@ -12,19 +12,16 @@ interface ApiService {
     @POST("register")
     fun register(
         @Field("name") name: String,
-        @Field("email") email: String,
+        @Field("phone") phone: String,
         @Field("role") role: Int,
         @Field("password") password: String,
-        @Field("name_pembimbing") name_pembimbing: String,
-        @Field("email_pembimbing") email_pembimbing: String,
-        @Field("password_pembimbing") password_pembimbing: String,
         @Field("doctor_id") doctor_id: Int
     ): Call<WrappedResponse<User>>
 
     @FormUrlEncoded
     @POST("login")
     fun login(
-        @Field("email") email: String,
+        @Field("phone") phone: String,
         @Field("password") password: String,
     ): Call<WrappedResponse<User>>
 
@@ -49,7 +46,7 @@ interface ApiService {
     fun fetchLaporans(): Call<WrappedListResponse<Laporan>>
 
     @GET("laporans/showbyuser/{id}")
-    fun fetchLaporansByUser(@Path("id") id: Int): Call<WrappedListResponse<Laporan>>
+    fun fetchLaporansByUser(@Path("id") id: String): Call<WrappedListResponse<Laporan>>
 
     @FormUrlEncoded
     @POST("laporans")
@@ -107,7 +104,7 @@ interface ApiService {
     ): Call<WrappedResponse<BasisPengetahuan>>
 
     @GET("histories/showbyuser/{id}")
-    fun fetchHistoriesByUser(@Path("id") id: Int): Call<WrappedListResponse<History>>
+    fun fetchHistoriesByUser(@Path("id") id: String): Call<WrappedListResponse<History>>
 
     @FormUrlEncoded
     @POST("histories")
@@ -130,4 +127,8 @@ interface ApiService {
         @Field("response") event: String,
         @Field("date") date: String,
     ): Call<WrappedResponse<QuisionerResponse>>
+
+    @GET("relasi/{id}")
+    fun relasiDoctorCount(@Path("id") id: Int): Call<WrappedResponse<Int>>
+
 }

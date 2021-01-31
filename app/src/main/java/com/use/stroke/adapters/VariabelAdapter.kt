@@ -62,7 +62,7 @@ class VariabelAdapter(private val context: Context, private val count:Int): Recy
                         showMsg("Silahkan Mengisi Variabel Terlebih dahulu")
                         spinner.clearSelectedItem()
                     }else{
-                        showMsg("Index Terpilih ${value.value}")
+//                        showMsg("Index Terpilih ${value.value}")
                         itemSelectVariabel.add(valueName)
                         itemSelectCf.add(value.value)
                     }

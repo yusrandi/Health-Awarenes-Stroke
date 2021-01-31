@@ -33,6 +33,7 @@ class VideoActivity : AppCompatActivity(), MessageHandler.MsgHandler {
     private var watchFinished = false
 
     private lateinit var historyViewModel: HistoryViewModel
+    private var indexVideo = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +48,7 @@ class VideoActivity : AppCompatActivity(), MessageHandler.MsgHandler {
             handleUI(it)
         }
 
-        val index = intent.getIntExtra("index", 0)
-        STREAM_URL = dataStreamUrl[index]
+
 
 
     }
@@ -79,14 +79,17 @@ class VideoActivity : AppCompatActivity(), MessageHandler.MsgHandler {
 
         video_view.player = player
 
-        val mediaItem: MediaItem = MediaItem.fromUri("${Constants.BASE_API}$STREAM_URL")
+        val index = intent.getIntExtra("index", 0)
+        Log.e(TAG, "Video URL ${dataStreamUrl[index]}, index $index")
+        indexVideo = index+1
+        val mediaItem: MediaItem = MediaItem.fromUri("${Constants.BASE_API}${dataStreamUrl[index]}")
 
         player.setMediaItem(mediaItem)
         player.prepare()
         player.play()
         player.addListener(object : Player.EventListener {
             override fun onPlayerError(error: ExoPlaybackException) {
-                showMsg("onPlayerError $error")
+//                showMsg("onPlayerError $error")
             }
 
             override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
@@ -122,8 +125,7 @@ class VideoActivity : AppCompatActivity(), MessageHandler.MsgHandler {
 
 
     override fun onBackPressed() {
-
-        val event = "Telah Menonton Video 1"
+        val event = "Telah Menonton Video $indexVideo"
        if(Constants.getRole(this) == 3){
            if (watchFinished) historyViewModel.store(
                Constants.getID(this),
@@ -131,6 +133,7 @@ class VideoActivity : AppCompatActivity(), MessageHandler.MsgHandler {
                getCurrentTime()
            ) else alertWarning("")
        }else{
+           player.release()
            super.onBackPressed()
        }
 

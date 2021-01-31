@@ -9,12 +9,17 @@
         tools:context=".StepPembimbingQuisionerActivity">
 
     <LinearLayout
+            android:gravity="center_vertical"
             android:padding="@dimen/space_x2"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="@dimen/space_x10">
 
-        <TextView android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Questioner" android:textColor="@color/colorWhite" android:fontFamily="@font/nunito_extrabold" android:textSize="@dimen/text_24"/>
+        <RelativeLayout android:layout_width="@dimen/space_x5" android:layout_height="match_parent">
+            <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
+                       android:src="@drawable/ic_baseline_arrow_back_24_white"/>
+        </RelativeLayout>
+        <TextView android:layout_marginStart="@dimen/space" android:paddingBottom="@dimen/space" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kuisioner" android:textColor="@color/colorWhite" android:fontFamily="@font/nunito_extrabold" android:textSize="@dimen/text_24"/>
     </LinearLayout>
     <RelativeLayout
             android:layout_above="@id/pembimbing_quisioner_navigation"

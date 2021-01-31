@@ -22,6 +22,7 @@ class AuthActivity : AppCompatActivity() {
     companion object {
         const val TAG = "AuthActivity"
     }
+
     private val viewModel by lazy {
         ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application)).get(
             UserViewModel::class.java
@@ -62,39 +63,32 @@ class AuthActivity : AppCompatActivity() {
 
     private fun userSignUp() {
         val name = auth_et_user.text.toString().trim()
-        val email = auth_et_email.text.toString().trim()
+        val phone = auth_et_email.text.toString().trim()
         val pass = auth_et_password.text.toString().trim()
 
         val emailPembimbing = auth_et_email_pembimbing.text.toString().trim()
 
-        if(role!=3){
+        if (role != 3) {
             if (name.isNotEmpty()) {
-                if (validateField(email, pass)) {
-                    viewModel.register(User(name = name, email = email, password = pass, role = role),User(name = name, email = email, password = pass, role = role),0)
-                    showMsg("userSignUp")
+                if (validateField(phone, pass)) {
+                    viewModel.register(User(name = name, phone = phone, password = pass, role = role), 0)
+//                    showMsg("userSignUp")
 
                 }
             } else auth_layout_username.error = "This field is required"
-        }else{
-            val namePembimbing = auth_et_user_pembimbing.text.toString().trim()
-            val passPembimbing = auth_et_password_pembimbing.text.toString().trim()
+        } else {
 
-            val user = User(name = name, email = email, password = pass, role = role)
-            val userPembimbing = User(name = namePembimbing, email = emailPembimbing, password = passPembimbing, role = role)
+            val user = User(name = name, phone = phone, password = pass, role = role)
 
-            if(validateFieldPembimbing(namePembimbing, emailPembimbing, passPembimbing) && validateField(email, pass)){
-                if (name.isNotEmpty()) {
-                    if (validateField(email, pass)) {
-                        viewModel.register(user, userPembimbing, doctorId)
-                        showMsg("userSignUp")
+            if (name.isNotEmpty()) {
+                if (validateField(phone, pass)) {
+                    viewModel.register(user, doctorId)
+//                        showMsg("userSignUp")
 
-                    }
-                } else auth_layout_username.error = "This field is required"
-            }else{
-                showMsg("Silahkan Mengisi Semua Field")
-            }
+                }
+            } else auth_layout_username.error = "This field is required"
+
         }
-
 
 
     }
@@ -105,7 +99,7 @@ class AuthActivity : AppCompatActivity() {
         val pass = auth_et_password.text.toString().trim()
 
         if (validateField(email, pass)) {
-            showMsg("userSignIn")
+//            showMsg("userSignIn")
             viewModel.login(email, pass)
         }
     }
@@ -113,8 +107,8 @@ class AuthActivity : AppCompatActivity() {
     private fun regisState() {
 
         state = false
-        auth_title.text = "Sign Up"
-        auth_label.text = "Already Have an Account"
+        auth_title.text = "Selamat Datang"
+        auth_label.text = "Sudah punya akun"
         auth_btn_submit.text = "Sign up"
         auth_layout_username.visibility = View.VISIBLE
         auth_layout_spinner.visibility = View.VISIBLE
@@ -128,8 +122,9 @@ class AuthActivity : AppCompatActivity() {
             setItems(dataListSpinner)
             setOnSpinnerItemSelectedListener<String> { _, _, index, _ ->
 //                showMsg("Index Terpilih $index")
-                role = index+1
-                if(index == 2) auth_spinner_dokter.visibility = View.VISIBLE else auth_spinner_dokter.visibility = View.GONE
+                role = index + 1
+                if (index == 2) auth_spinner_dokter.visibility = View.VISIBLE else auth_spinner_dokter.visibility =
+                    View.GONE
 
             }
         }
@@ -137,9 +132,9 @@ class AuthActivity : AppCompatActivity() {
             setItems(dataListSpinnerDokter)
             setOnSpinnerItemSelectedListener<String> { _, _, index, _ ->
                 val data = allUserDokterData[index]
-                showMsg("Index Terpilih $data")
+//                showMsg("Index Terpilih $data")
                 doctorId = data.id!!
-                auth_layout_form_pembimbing.visibility = View.VISIBLE
+//                auth_layout_form_pembimbing.visibility = View.VISIBLE
 
 
             }
@@ -149,21 +144,21 @@ class AuthActivity : AppCompatActivity() {
 
     private fun loginState() {
         state = true
-        auth_title.text = "Sign In"
-        auth_label.text = "Create Account"
+        auth_title.text = "Silahkan Masuk"
+        auth_label.text = "Member baru ? Buat akun"
         auth_btn_submit.text = "Sign In"
         auth_layout_username.visibility = View.GONE
         auth_layout_spinner.visibility = View.GONE
 
     }
 
-    private fun validateField(email: String, pass: String): Boolean {
+    private fun validateField(phone: String, pass: String): Boolean {
         reset()
-        return if (email.isEmpty()) {
+        return if (phone.isEmpty()) {
             auth_layout_email.error = "This field is required"
             false
-        } else if (!Constants.isValidEmail(email)) {
-            auth_layout_email.error = "Email not valid"
+        } else if (phone.length < 10) {
+            auth_layout_email.error = "phone must min 10 length"
             false
         } else {
             if (pass.isEmpty()) {
@@ -182,33 +177,6 @@ class AuthActivity : AppCompatActivity() {
         return false
     }
 
-    private fun validateFieldPembimbing(name:String, email: String, pass: String): Boolean {
-        reset()
-        return if(name.isEmpty()){
-            auth_layout_username_pembimbing.error = "This field is required"
-            false
-        }else if (email.isEmpty()) {
-            auth_layout_email_pembimbing.error = "This field is required"
-            false
-        } else if (!Constants.isValidEmail(email)) {
-            auth_layout_email_pembimbing.error = "Email not valid"
-            false
-        } else {
-            if (pass.isEmpty()) {
-                auth_layout_password_pembimbing.error = "This field is required"
-                false
-            } else {
-                if (pass.length < 8) {
-                    auth_layout_password_pembimbing.error = "password must min 8 length"
-                    false
-                } else {
-                    true
-                }
-            }
-        }
-
-        return false
-    }
 
     private fun handleUIState(it: UserState) {
         when (it) {
@@ -222,7 +190,7 @@ class AuthActivity : AppCompatActivity() {
                 showMsg(it.message)
             }
             is UserState.Success -> {
-                Constants.setAuth(this, it.id, it.name, it.role)
+                Constants.setAuth(this, it.id, it.name, it.role, it.email)
                 starApp(it.role)
                 showMsg("Success")
 
@@ -232,13 +200,14 @@ class AuthActivity : AppCompatActivity() {
                 it.data.forEach {
                     allUserDokterData.add(it)
                     Log.e(TAG, "Name ${it.name}, Role ${it.role}")
-                    if(it.role == 1) dataListSpinnerDokter.add(it.name.toString())
+                    if (it.role == 1) dataListSpinnerDokter.add(it.name.toString())
                 }
             }
             is UserState.IsLoading -> isLoading(it.state)
             else -> showMsg("Undefined")
         }
     }
+
     private fun isLoading(state: Boolean) {
 
         if (state) {
@@ -259,13 +228,9 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun showMsg(msg: String) = Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-    private fun starApp(role:Int) {
+    private fun starApp(role: Int) {
 
-        if(role==2){
-            startActivity(Intent(this, StepPembinmbingHomeActivity::class.java)).also { finish() }
-        }else{
-            startActivity(Intent(this, StepHomeActivity::class.java)).also { finish() }
+        startActivity(Intent(this, StepHomeActivity::class.java)).also { finish() }
 
-        }
     }
 }

@@ -53,7 +53,7 @@ class PembimbingQuisionerAdapter(private val context: Context): RecyclerView.Ada
             Log.d(TAG, "pos $position")
             val quisionerResponse = dataList[position]
 
-            itemView.item_pembimbing_home_event.text = Html.fromHtml("<b>Anda </b> telah mengisi Quisioner")
+            itemView.item_pembimbing_home_event.text = Html.fromHtml("<b>Anda </b> telah mengisi Kuisioner")
             itemView.item_pembimbing_home_date.text = quisionerResponse.date
             itemView.setOnClickListener {
                 context.startActivity(Intent(context, QuisionerFormActivity::class.java).apply {

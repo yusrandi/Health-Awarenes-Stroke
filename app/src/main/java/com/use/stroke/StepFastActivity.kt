@@ -20,6 +20,7 @@ import com.use.stroke.utils.Constants
 import com.use.stroke.viewmodels.*
 import kotlinx.android.synthetic.main.activity_result.*
 import kotlinx.android.synthetic.main.activity_step_fast.*
+import kotlinx.android.synthetic.main.activity_step_pembimbing_fast.*
 import kotlinx.android.synthetic.main.activity_step_research.*
 
 class StepFastActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -50,7 +51,7 @@ class StepFastActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
 
         val userId = Constants.getID(this)
         Log.e(TAG, "UserId $userId")
-        laporanViewModel.fetchLaporansByUser(userId)
+        laporanViewModel.fetchLaporansByUser(userId.toString())
 
         laporanViewModel.getState().observe(this, Observer {
             Log.e(TAG, "laporanViewModel.getState $it")
@@ -58,20 +59,23 @@ class StepFastActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
 
         })
 
-        laporanViewModel.getLaporan().observe(this, Observer {
-            if (it.isEmpty()) {
-                fast_empty.visibility = View.VISIBLE
-            }else{
-                fastAdapter.setList(it as MutableList<Laporan>)
-            }
-        })
         initRecyclerView()
+
+        if (Constants.getRole(this) == 2) {
+            fast_layout_cari.visibility = View.VISIBLE
+            fast_search.setOnClickListener {
+                val id = fast_no.text.toString()
+                if (id.isEmpty()) showMsg("Harap Mengisi Nomor Hp Pasien") else laporanViewModel.fetchLaporansByUser(id)
+            }
+        } else fast_layout_cari.visibility = View.GONE
+
     }
 
     override fun onStart() {
         super.onStart()
         gejalaViewModel.fetchGejalasCFUser()
     }
+
     private fun initRecyclerView() {
 
         fastAdapter = FastAdapter(this)
@@ -103,6 +107,7 @@ class StepFastActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
             else -> showMsg("Undefined")
         }
     }
+
     private fun handleUI(it: LaporanState) {
 
         when (it) {
@@ -112,6 +117,17 @@ class StepFastActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
                 showMsg(it.err)
             }
             is LaporanState.IsSuccess -> {
+
+            }
+            is LaporanState.IsLoad ->{
+                if (it.data.isEmpty())
+                    fast_empty.visibility = View.VISIBLE
+                 else
+                    fast_empty.visibility = View.GONE
+
+
+
+                fastAdapter.setList(it.data)
 
             }
             is LaporanState.IsLoading -> isLoading(it.state)

@@ -22,7 +22,7 @@ class HistoryViewModel : ViewModel() {
     private var historys = MutableLiveData<List<History>>()
 
 
-    fun fetchHistorysByUser(id:Int) {
+    fun fetchHistorysByUser(id:String) {
         state.value = HistoryState.IsLoading(true)
         api.fetchHistoriesByUser(id).enqueue(object : Callback<WrappedListResponse<History>> {
             override fun onResponse(

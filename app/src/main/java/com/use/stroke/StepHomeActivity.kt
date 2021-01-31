@@ -28,7 +28,7 @@ class StepHomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
 
     private val viewModel by lazy {
         ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application)).get(
-            UserViewModel::class.java
+            RelasiViewModel::class.java
         )
     }
 
@@ -39,7 +39,7 @@ class StepHomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
         home_navigation.selectedItemId = R.id.home
         home_navigation.setOnNavigationItemSelectedListener(this)
 
-        viewModel.fetchAllUser()
+        viewModel.getDoctorCount(Constants.getID(this))
         viewModel.getState().observer(this) {
             handleUIState(it)
         }
@@ -52,29 +52,30 @@ class StepHomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
 
         checkLogInRoleUser(Constants.getRole(this))
         step_home_name.text = Constants.getName(this)
+        step_home_nomor.text = Constants.getPhoneNumber(this)
 
+        step_home_go_out.setOnClickListener {
+            Constants.clearToken(this)
+            startActivity(Intent(this, SplashActivity::class.java)).also { finishAffinity() }
+        }
     }
 
-    private fun handleUIState(it: UserState) {
+    private fun handleUIState(it: RelasiState) {
         when (it) {
 
-            is UserState.Error -> {
+            is RelasiState.IsError -> {
                 isLoading(false)
-                showMsg(it.err!!)
+                showMsg(it.err)
             }
-            is UserState.Failed -> {
-                isLoading(false)
-                showMsg(it.message)
-            }
-            is UserState.Success -> {
-            }
-            is UserState.IsLoad -> {
+
+            is RelasiState.IsSuccess -> {
                 if(Constants.getRole(this) == 1){
-                    step_home_persen.text = it.data.size.toString()
+                    step_home_persen.text = it.msg
                     step_home_persen_label.text = "Jumlah Pasien"
                 }
             }
-            is UserState.IsLoading -> isLoading(it.state)
+
+            is RelasiState.IsLoading -> isLoading(it.state)
             else -> showMsg("Undefined")
         }
     }
@@ -100,9 +101,18 @@ class StepHomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
                     startActivity(Intent(this, DoctorManageGejalaActivity::class.java))
                 }
             }
+            2 -> {
+                step_home_persen.text = "..."
+                step_home_persen_label.text = "..."
+
+                step_home_go_test_label.text = "History Aktivitas Pasien"
+                step_home_go_test.setOnClickListener {
+                    startActivity(Intent(this, StepPembinmbingHomeActivity::class.java))
+                }
+            }
             3 -> {
                 step_home_persen.text = "${Constants.getResult(this)}%"
-                step_home_persen_label.text = "Probabilitas"
+                step_home_persen_label.text = "Kemungkinan Mengidap Penyakit Kanker"
                 step_home_go_test.visibility = View.VISIBLE
 
                 step_home_go_test_label.text = "Mulai Konsultasi"

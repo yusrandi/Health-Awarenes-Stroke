@@ -82,6 +82,16 @@ class StepManageActivity : AppCompatActivity(), BottomNavigationView.OnNavigatio
                 step_manage_persen.text = ". . ."
                 step_manage_persen_label.text = ". . ."
             }
+            2 -> {
+                step_manage_doctor.visibility = View.GONE
+                step_manage_patient.visibility = View.GONE
+
+                step_manage_pendamping_form.visibility = View.VISIBLE
+                step_manage_pendamping_form.setOnClickListener {
+                    startActivity(Intent(this, StepPembimbingQuisionerActivity::class.java))
+                }
+
+            }
             3 -> {
                 step_manage_doctor.visibility = View.GONE
             }

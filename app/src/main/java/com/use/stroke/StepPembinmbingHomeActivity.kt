@@ -15,10 +15,11 @@ import com.use.stroke.utils.Constants
 import com.use.stroke.viewmodels.HistoryState
 import com.use.stroke.viewmodels.HistoryViewModel
 import kotlinx.android.synthetic.main.activity_step_home.*
+import kotlinx.android.synthetic.main.activity_step_pembimbing_fast.*
 import kotlinx.android.synthetic.main.activity_step_pembinmbing_home.*
 import kotlinx.android.synthetic.main.activity_video.*
 
-class StepPembinmbingHomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class StepPembinmbingHomeActivity : AppCompatActivity(){
     companion object {
         const val TAG = "StepPembinmbingHomeActivity"
     }
@@ -30,9 +31,6 @@ class StepPembinmbingHomeActivity : AppCompatActivity(), BottomNavigationView.On
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_step_pembinmbing_home)
 
-        pembimbing_home_navigation.selectedItemId = R.id.home
-        pembimbing_home_navigation.setOnNavigationItemSelectedListener(this)
-
         historyViewModel = ViewModelProviders.of(this).get(HistoryViewModel::class.java)
 
         historyViewModel.getState().observer(this) {
@@ -42,6 +40,10 @@ class StepPembinmbingHomeActivity : AppCompatActivity(), BottomNavigationView.On
 
         initRecyclerView()
 
+        pembimbing_home_search.setOnClickListener {
+            val id = pembimbing_home_no.text.toString()
+            if(id.isEmpty()) showMsg("Harap Mengisi Nomor Hp Pasien") else historyViewModel.fetchHistorysByUser(id)
+        }
 
     }
 
@@ -56,7 +58,7 @@ class StepPembinmbingHomeActivity : AppCompatActivity(), BottomNavigationView.On
     override fun onStart() {
         super.onStart()
         Log.e(TAG, "onStart")
-        historyViewModel.fetchHistorysByUser(Constants.getID(this))
+
     }
 
     private fun handleUI(it: HistoryState) {
@@ -64,7 +66,12 @@ class StepPembinmbingHomeActivity : AppCompatActivity(), BottomNavigationView.On
             is HistoryState.IsLoading -> isLoading(it.state)
             is HistoryState.IsError -> showMsg(it.err)
             is HistoryState.IsLoad -> {
-                pembimbingHomeAdapter.setList(it.data)
+                if (it.data.isEmpty())
+                    pembimbing_home_empty.visibility = View.VISIBLE
+                else
+                    pembimbing_home_empty.visibility = View.GONE
+
+                    pembimbingHomeAdapter.setList(it.data)
 
             }
             is HistoryState.IsSuccess -> {
@@ -87,24 +94,4 @@ class StepPembinmbingHomeActivity : AppCompatActivity(), BottomNavigationView.On
     private fun showMsg(msg: String) = Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.home -> {
-                true
-            }
-
-            R.id.fast -> {
-                startActivity(Intent(applicationContext, StepPembimbingFastActivity::class.java)).also { finish() }
-                overridePendingTransition(100, 100)
-                true
-            }
-            R.id.tutor -> {
-                startActivity(Intent(applicationContext, StepPembimbingQuisionerActivity::class.java)).also { finish() }
-                overridePendingTransition(100, 100)
-                true
-            }
-
-            else -> false
-        }
-    }
 }

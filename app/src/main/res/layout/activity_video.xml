@@ -24,7 +24,7 @@
     <LinearLayout android:orientation="vertical" android:background="@drawable/background_bot"
                   android:layout_marginTop="?attr/actionBarSize" android:layout_width="match_parent"
                   android:layout_height="match_parent">
-        <TextView android:fontFamily="@font/nunito_reguler" android:textSize="@dimen/text_14"
+        <TextView android:visibility="gone" android:fontFamily="@font/nunito_reguler" android:textSize="@dimen/text_14"
                   android:layout_margin="@dimen/space" android:padding="@dimen/space"
                   android:text="Video Upaya Pencegahan Penyakit Stroke" android:layout_width="wrap_content"
                   android:layout_height="wrap_content"/>

@@ -159,7 +159,7 @@ class StepResearchActivity : AppCompatActivity(), BottomNavigationView.OnNavigat
             .setConfirmText("Ya, yakin")
             .setConfirmClickListener { sDialog ->
 
-                showMsg("telah dihapus $msg")
+//                showMsg("telah dihapus $msg")
                 researchViewModel.delete(msg.toInt())
                 sDialog.dismissWithAnimation()
             }

@@ -49,7 +49,7 @@ class QuisionerFormActivity : AppCompatActivity() {
 
         quisioner_form_done.setOnClickListener {
             if(quisionerFormAdapter.dataList.size == quisionerFormAdapter.itemSelect.size){
-                showMsg("data ${quisionerFormAdapter.itemSelect}")
+//                showMsg("data ${quisionerFormAdapter.itemSelect}")
                 val sb = StringBuffer()
                 for (i in 0 until quisionerFormAdapter.itemSelect.size) {
                     if (i > 0) {
@@ -59,7 +59,7 @@ class QuisionerFormActivity : AppCompatActivity() {
                 }
                 questionerResponseViewModel.store(Constants.getID(this),sb.toString(),getCurrentTime())
             }else{
-                showMsg("tdak sama")
+//                showMsg("tdak sama")
             }
         }
     }

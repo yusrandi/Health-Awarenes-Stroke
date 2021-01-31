@@ -32,6 +32,7 @@
                     android:textSize="@dimen/text_18"
             />
             <TextView
+                    android:textColor="@color/colorFont"
                     android:fontFamily="sans-serif"
                     android:id="@+id/item_fast_desc"
                     android:layout_width="wrap_content"

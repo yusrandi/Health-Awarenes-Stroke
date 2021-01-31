@@ -15,9 +15,11 @@
             android:layout_height="@dimen/space_x10">
 
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
-            <LinearLayout android:padding="@dimen/space" android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:padding="@dimen/space" android:gravity="center" android:orientation="horizontal"
+                          android:layout_width="match_parent" android:layout_height="match_parent">
 
-                <ImageView  android:layout_width="@dimen/space_x5_half" android:layout_height="match_parent" android:src="@mipmap/logo"/>
+                <ImageView android:layout_width="@dimen/space_x5_half" android:layout_height="match_parent"
+                           android:src="@mipmap/logo"/>
                 <LinearLayout
                         android:layout_weight="1"
                         android:layout_width="0dp"
@@ -42,7 +44,6 @@
             </LinearLayout>
         </LinearLayout>
 
-
     </RelativeLayout>
     <LinearLayout
             android:orientation="vertical"
@@ -58,12 +59,57 @@
                 android:text="History Konsultasi Pasien" android:textColor="@color/colorPrimary"
                 android:fontFamily="@font/nunito_extrabold" android:textSize="@dimen/text_18"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="@dimen/space"
-                android:id="@+id/pembimbing_fast_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/space"/>
+
+            <LinearLayout android:id="@+id/pembimbing_fast_layout_cari" android:layout_marginTop="@dimen/space" android:visibility="gone" android:gravity="center" android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/space"
+                        android:background="@drawable/background_white"
+                        android:layout_width="0dp"
+                        app:hintEnabled="false"
+                        android:focusable="true" android:focusableInTouchMode="true"
+                        app:hintTextColor="@color/colorFont"
+                        android:textColorHint="@color/colorFont"
+                        android:layout_height="wrap_content">
+
+                    <EditText
+                            android:hint="08xxxxxxxxx"
+                            android:inputType="number"
+                            android:textColorHint="@color/colorFont"
+                            android:singleLine="true"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/text_18"
+                            android:id="@+id/pembimbing_fast_no"
+                            android:layout_width="match_parent"
+                            android:background="@android:color/transparent"
+                            android:layout_height="@dimen/space_x5"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                        android:id="@+id/pembimbing_fast_search"
+                        android:layout_marginStart="@dimen/space"
+                        android:background="@drawable/gradien_primary"
+                        android:layout_width="@dimen/space_x10"
+                        android:layout_height="@dimen/space_x5">
+
+                    <TextView android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:text="Cari" android:gravity="center"
+                              android:fontFamily="@font/nunito_extrabold"
+                              android:textColor="@color/colorWhite" android:textSize="@dimen/text_16"/>
+                </LinearLayout>
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="@dimen/space"
+                    android:id="@+id/pembimbing_fast_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/space"/>
+
     </LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"
@@ -84,7 +130,10 @@
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-    <TextView android:id="@+id/pembimbing_fast_empty" android:visibility="gone" android:layout_centerInParent="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Belum ada History" android:textColor="@color/colorPrimaryDark" android:fontFamily="@font/nunito_extrabold" android:textSize="@dimen/text_24"/>
+    <TextView android:id="@+id/pembimbing_fast_empty" android:visibility="gone" android:layout_centerInParent="true"
+              android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Belum ada History"
+              android:textColor="@color/colorPrimaryDark" android:fontFamily="@font/nunito_extrabold"
+              android:textSize="@dimen/text_24"/>
 
     <com.github.ybq.android.spinkit.SpinKitView
             android:visibility="gone"

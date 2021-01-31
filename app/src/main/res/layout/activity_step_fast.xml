@@ -25,7 +25,53 @@
         <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="match_parent">
             <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
 
+                <LinearLayout android:id="@+id/fast_layout_cari" android:layout_marginTop="@dimen/space" android:gravity="center" android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                            android:layout_weight="1"
+                            android:layout_margin="@dimen/space"
+                            android:background="@drawable/background_white"
+                            android:layout_width="0dp"
+                            app:hintEnabled="false"
+                            android:focusable="true" android:focusableInTouchMode="true"
+                            app:hintTextColor="@color/colorFont"
+                            android:textColorHint="@color/colorFont"
+                            android:layout_height="wrap_content">
+
+                        <EditText
+                                android:hint="08xxxxxxxxx"
+                                android:inputType="number"
+                                android:textColorHint="@color/colorFont"
+                                android:singleLine="true"
+                                android:textColor="#000000"
+                                android:textSize="@dimen/text_18"
+                                android:id="@+id/fast_no"
+                                android:layout_width="match_parent"
+                                android:background="@android:color/transparent"
+                                android:layout_height="@dimen/space_x5"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                            android:id="@+id/fast_search"
+                            android:layout_marginStart="@dimen/space"
+                            android:background="@drawable/gradien_primary"
+                            android:layout_width="@dimen/space_x10"
+                            android:layout_height="@dimen/space_x5">
+
+                        <TextView android:layout_width="match_parent"
+                                  android:layout_height="match_parent"
+                                  android:text="Cari" android:gravity="center"
+                                  android:fontFamily="@font/nunito_extrabold"
+                                  android:textColor="@color/colorWhite" android:textSize="@dimen/text_16"/>
+                    </LinearLayout>
+                </LinearLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
+                        android:layout_marginTop="@dimen/space"
+                        android:layout_below="@id/fast_layout_cari"
                         android:id="@+id/fast_rv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

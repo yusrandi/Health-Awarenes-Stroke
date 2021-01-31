@@ -43,14 +43,11 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun starApp() {
-        if(Constants.getAuth(this)){
-            if(Constants.getRole(this)==2){
-                startActivity(Intent(this, StepPembinmbingHomeActivity::class.java)).also { finish() }
-            }else{
-                startActivity(Intent(this, StepHomeActivity::class.java)).also { finish() }
+        if (Constants.getAuth(this)) {
 
-            }
-        }else{
+            startActivity(Intent(this, StepHomeActivity::class.java)).also { finish() }
+
+        } else {
             startActivity(Intent(this, AuthActivity::class.java)).also { finish() }
 
         }

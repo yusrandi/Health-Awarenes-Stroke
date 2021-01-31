@@ -50,20 +50,21 @@
                     app:apsv_typeface="fonts/agency.ttf"/>
 
             <LinearLayout android:gravity="center" android:layout_centerInParent="true" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <TextView android:id="@+id/detail_fast_persen"  android:layout_width="wrap_content" android:layout_height="wrap_content"
+                <TextView android:textColor="@color/colorFont" android:id="@+id/detail_fast_persen"  android:layout_width="wrap_content" android:layout_height="wrap_content"
                           android:text="%" android:gravity="center" android:fontFamily="@font/nunito_extrabold"
                           android:textSize="@dimen/text_32"/>
-                <TextView android:id="@+id/step_home_persen_label"
-                          android:layout_width="wrap_content" android:layout_height="wrap_content"
-                          android:text="probabilitas"  android:fontFamily="@font/nunito_extrabold"
-                          android:textSize="@dimen/text_14"/>
+
             </LinearLayout>
 
 
         </RelativeLayout>
 
-        <TextView
+        <TextView android:layout_gravity="center" android:textColor="@color/colorFont" android:id="@+id/step_home_persen_label"
                   android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="Kemungkinan Mengidap Penyakit Kanker"  android:fontFamily="@font/nunito_extrabold"
+                  android:textSize="@dimen/text_14"/>
+        <TextView
+                  android:textColor="@color/colorFont" android:layout_marginTop="@dimen/space_x2" android:layout_width="wrap_content" android:layout_height="wrap_content"
                   android:text="Detail Jawaban"  android:fontFamily="@font/nunito_extrabold"
                   android:textSize="@dimen/text_18"/>
         <androidx.recyclerview.widget.RecyclerView

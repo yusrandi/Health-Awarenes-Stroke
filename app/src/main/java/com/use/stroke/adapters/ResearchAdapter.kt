@@ -46,7 +46,7 @@ class ResearchAdapter(private val context: Context): RecyclerView.Adapter<Resear
 
         fun bindView(research: Research){
             itemView.item_research_title.text = research.title
-            itemView.item_research_desc.text = research.desc
+            itemView.item_research_desc.text = "\t\t\t\t\t\t${research.desc.replace("//","")}"
 
             itemView.item_research_read.setOnClickListener {
                 context.startActivity(Intent(context, ResearchDetailActivity::class.java).apply {
@@ -59,17 +59,17 @@ class ResearchAdapter(private val context: Context): RecyclerView.Adapter<Resear
                     onItemDeleteClickCallback.onItemClick(research)
                     true
                 }
+
+                itemView.setOnClickListener {
+                    context.startActivity(Intent(context, ResearchFormActivity::class.java).apply {
+                        putExtra("id", research.id)
+                        putExtra("title", research.title)
+                        putExtra("desc", research.desc)
+                        putExtra("status", "Update")
+                    })
+                }
             }else{
                 itemView.item_research_delete.visibility = View.INVISIBLE
-            }
-
-            itemView.setOnClickListener {
-                context.startActivity(Intent(context, ResearchFormActivity::class.java).apply {
-                    putExtra("id", research.id)
-                    putExtra("title", research.title)
-                    putExtra("desc", research.desc)
-                    putExtra("status", "Update")
-                })
             }
 
 
