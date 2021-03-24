@@ -12,7 +12,7 @@
 
     <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent">
 
-        <ImageView  android:layout_width="@dimen/space_x10" android:layout_height="@dimen/space_x10" android:src="@mipmap/ic_person"/>
+        <ImageView  android:layout_width="@dimen/space_x10" android:layout_height="@dimen/space_x10" android:src="@mipmap/logo"/>
         <LinearLayout
                 android:layout_weight="1"
                 android:layout_width="0dp"

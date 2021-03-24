@@ -34,6 +34,19 @@ interface ApiService {
     @GET("users")
     fun fetchAllUser(): Call<WrappedListResponse<User>>
 
+    @GET("users/{id}")
+    fun fetchUserById(@Path("id") id: String): Call<WrappedResponse<User>>
+
+    @FormUrlEncoded
+    @PUT("users/{id}")
+    fun userUpdate(
+        @Path("id") id: Int,
+        @Field("name") name: String,
+        @Field("phone") phone: String,
+        @Field("password") password: String,
+    ): Call<WrappedResponse<User>>
+
+
     @GET("gejala/showbykategori/{id}")
     fun fetchGejalaByKategori(
         @Path("id") id: Int,

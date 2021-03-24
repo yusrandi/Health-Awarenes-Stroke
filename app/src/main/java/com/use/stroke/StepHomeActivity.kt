@@ -46,17 +46,16 @@ class StepHomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
 
         initProgressArch()
 
-
-
         Log.e(TAG, "ID ${Constants.getID(this)}, Role ${Constants.getRole(this)}")
 
         checkLogInRoleUser(Constants.getRole(this))
         step_home_name.text = Constants.getName(this)
         step_home_nomor.text = Constants.getPhoneNumber(this)
 
-        step_home_go_out.setOnClickListener {
-            Constants.clearToken(this)
-            startActivity(Intent(this, SplashActivity::class.java)).also { finishAffinity() }
+
+
+        step_home_go_profile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
 
@@ -112,7 +111,7 @@ class StepHomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
             }
             3 -> {
                 step_home_persen.text = "${Constants.getResult(this)}%"
-                step_home_persen_label.text = "Kemungkinan Mengidap Penyakit Kanker"
+                step_home_persen_label.text = "Kemungkinan Mengidap Penyakit Stroke"
                 step_home_go_test.visibility = View.VISIBLE
 
                 step_home_go_test_label.text = "Mulai Konsultasi"

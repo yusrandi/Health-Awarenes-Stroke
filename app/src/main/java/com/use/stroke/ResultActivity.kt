@@ -22,6 +22,7 @@ import com.use.stroke.viewmodels.*
 import devlight.io.library.ArcProgressStackView
 import kotlinx.android.synthetic.main.activity_konsultasi_form.*
 import kotlinx.android.synthetic.main.activity_result.*
+import kotlinx.android.synthetic.main.dialog_result.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -111,10 +112,11 @@ class ResultActivity : AppCompatActivity() {
 
 
             val CF = dataJawaban!!.cf * dataJawabanCFUser!!.cf
+            Log.e(TAG, "Data Response $dataResponse")
             Log.e(TAG, "CFOld $CFOld, CF $CF")
             val result = (CFOld + CF) * (1 - CFOld)
 
-            Log.e(TAG, "Soal ${dataSoal.name}, Response $dataResponse, Jawaban ${dataJawaban.jawaban.name}, CF Pakar ${dataJawaban.cf}, CF User ${dataJawabanCFUser.cf}, Result $result")
+            Log.e(TAG, "No $index Soal ${dataSoal.name}, Response $dataResponse, Jawaban ${dataJawaban.jawaban.name}, CF Pakar ${dataJawaban.cf}, CF User ${dataJawabanCFUser.cf}, Result $result")
 
             CFOld = result
 
@@ -201,7 +203,13 @@ class ResultActivity : AppCompatActivity() {
             adapter = resultAdapter
         }
 
+
+
         val mAlertDialog = mBuilder.show()
+
+        mDialogView.dialog_result_back.setOnClickListener {
+            mAlertDialog.dismiss()
+        }
         //login button click of custom layout
 
     }

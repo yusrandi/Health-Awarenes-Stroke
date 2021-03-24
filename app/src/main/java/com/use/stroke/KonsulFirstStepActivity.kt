@@ -55,12 +55,17 @@ class KonsulFirstStepActivity : AppCompatActivity() {
             handleUI(it)
         })
 
+        itemSelectAll.clear()
+
         konsul_first_step_next.setOnClickListener {
 
             if(dataList.size == gejalaAdapter.itemSelect.size){
-                Log.e(TAG, "Item Select ${gejalaAdapter.itemSelect}")
-                itemSelectAll.addAll(gejalaAdapter.itemSelect)
 
+                Log.e(TAG, "Item Select ${gejalaAdapter.itemSelect}")
+
+                gejalaAdapter.itemSelect.forEach {
+                    itemSelectAll.add(it)
+                }
                 Log.e(TAG, "Kat ID ${katId+1}, data Size ${dataTitle.size}")
                 if(katId+1 < dataTitle.size){
 

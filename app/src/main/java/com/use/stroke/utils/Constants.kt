@@ -6,9 +6,9 @@ class Constants {
 
 
     companion object{
-//        const val BASE_API = "http://192.168.43.43/stroke/public"
+        const val BASE_API = "http://192.168.1.2/stroke/public"
 
-        const val BASE_API = "http://primarystrokeapp.com"
+//        const val BASE_API = "http://primarystrokeapp.com"
         const val API = "$BASE_API/api/user/"
         fun getID(context : Context) : Int{
 

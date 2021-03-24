@@ -14,7 +14,7 @@
             android:layout_height="@dimen/space_x20">
 
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
-            <LinearLayout android:padding="@dimen/space" android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:id="@+id/step_home_go_profile" android:padding="@dimen/space" android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent">
 
                 <ImageView  android:layout_width="@dimen/space_x5_half" android:layout_height="match_parent" android:src="@mipmap/logo"/>
                 <LinearLayout
@@ -103,7 +103,7 @@
 
         <TextView android:layout_gravity="center" android:textColor="@color/colorPrimary" android:id="@+id/step_home_persen_label"
                   android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:text=""  android:fontFamily="@font/nunito_extrabold"
+                  android:text=""  android:fontFamily="@font/nunito_extrabold" android:paddingBottom="@dimen/space"
                   android:textSize="@dimen/text_14"/>
 
         <LinearLayout android:layout_marginStart="@dimen/space_x5" android:layout_marginEnd="@dimen/space_x5" android:layout_marginTop="@dimen/space_x2" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
@@ -115,16 +115,7 @@
                           android:text="Mulai Konsultasi" android:gravity="center" android:fontFamily="@font/nunito_extrabold"
                           android:textColor="@color/colorWhite" android:textSize="@dimen/text_16"/>
             </LinearLayout>
-            <LinearLayout android:layout_marginTop="@dimen/space_x2" android:id="@+id/step_home_go_out"
-                          android:background="@drawable/gradien" android:layout_width="match_parent"
-                          android:layout_height="@dimen/space_x5_half">
 
-                <TextView android:layout_width="match_parent"
-                          android:layout_height="match_parent"
-                          android:text="Keluar" android:gravity="center"
-                          android:fontFamily="@font/nunito_extrabold"
-                          android:textColor="@color/colorWhite" android:textSize="@dimen/text_16"/>
-            </LinearLayout>
         </LinearLayout>
 
 
@@ -139,7 +130,7 @@
             app:itemIconTint="@drawable/selector"
             android:layout_alignParentBottom="true"
             app:elevation="@dimen/space_x20"
-            app:labelVisibilityMode="auto"
+            app:labelVisibilityMode="labeled"
             app:itemIconSize="@dimen/space_x4"
             app:itemTextAppearanceActive="@dimen/text_8"
             app:itemTextAppearanceInactive="@dimen/text_8"

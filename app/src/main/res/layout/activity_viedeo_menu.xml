@@ -29,16 +29,18 @@
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
                 <RelativeLayout android:id="@+id/menu_video_0" android:background="@drawable/gradien" android:layout_width="match_parent" android:layout_height="@dimen/space_x6">
-                    <TextView android:layout_centerInParent="true" android:layout_width="wrap_content"
-                              android:layout_height="wrap_content" android:layout_centerVertical="true" android:text="Upaya Pencegahan Penyakit Stroke"
-                              android:textStyle="bold" android:textColor="@color/colorWhite" android:textSize="@dimen/text_16"/>
 
+                    <TextView android:layout_centerInParent="true" android:layout_width="wrap_content"
+                              android:layout_height="wrap_content" android:layout_centerVertical="true"
+                              android:text="Pemanfaatan Media Aplikasi"
+                              android:textStyle="bold" android:textColor="@color/colorWhite"
+                              android:textSize="@dimen/text_16"/>
                 </RelativeLayout>
                 <RelativeLayout android:id="@+id/menu_video_1" android:layout_marginTop="@dimen/space_x2" android:background="@drawable/gradien" android:layout_width="match_parent"
                                 android:layout_height="@dimen/space_x6">
                     <TextView android:layout_centerInParent="true" android:layout_width="wrap_content"
                               android:layout_height="wrap_content" android:layout_centerVertical="true"
-                              android:text="Penyebab-penyebab Penyakit Stroke"
+                              android:text="Pengenalan Penyakit Stroke"
                               android:textStyle="bold" android:textColor="@color/colorWhite"
                               android:textSize="@dimen/text_16"/>
 
@@ -48,19 +50,18 @@
                                 android:layout_height="@dimen/space_x6">
                     <TextView android:layout_centerInParent="true" android:layout_width="wrap_content"
                               android:layout_height="wrap_content" android:layout_centerVertical="true"
-                              android:text="Panduan Menu Gizi Penderita Hipertensi"
+                              android:text="Pencegahan stroke berdasarkan faktor risiko"
                               android:textStyle="bold" android:textColor="@color/colorWhite"
                               android:textSize="@dimen/text_16"/>
 
                 </RelativeLayout>
                 <RelativeLayout android:id="@+id/menu_video_3" android:layout_marginTop="@dimen/space_x2" android:background="@drawable/gradien"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/space_x6">
-                    <TextView android:layout_centerInParent="true" android:layout_width="wrap_content"
-                              android:layout_height="wrap_content" android:layout_centerVertical="true"
-                              android:text="Panduan Pengenalan Aplikasi"
-                              android:textStyle="bold" android:textColor="@color/colorWhite"
-                              android:textSize="@dimen/text_16"/>
+                                android:layout_height="@dimen/space_x7">
+
+                    <TextView android:gravity="center" android:padding="@dimen/space" android:layout_centerInParent="true" android:layout_width="wrap_content"
+                              android:layout_height="wrap_content" android:layout_centerVertical="true" android:text="Pola makan penderita Hipertensi untuk pencegahan Stroke"
+                              android:textStyle="bold" android:textColor="@color/colorWhite" android:textSize="@dimen/text_16"/>
 
                 </RelativeLayout>
             </LinearLayout>

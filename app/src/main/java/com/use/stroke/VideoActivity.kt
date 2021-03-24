@@ -24,8 +24,8 @@ import java.util.*
 class VideoActivity : AppCompatActivity(), MessageHandler.MsgHandler {
     companion object {
         const val TAG = "VideoActivity"
-        var STREAM_URL = "/mergeliti.mp4"
-        private var dataStreamUrl = mutableListOf("/mergeliti.mp4","/1.mp4","/2.mp4","/3.mp4")
+        var STREAM_URL = "/1.mp4"
+        private var dataStreamUrl = mutableListOf("/1.mp4","/2.mp4","/3.mp4","/4.mp4")
 
     }
 

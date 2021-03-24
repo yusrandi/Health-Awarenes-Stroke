@@ -12,7 +12,7 @@
                   android:layout_height="match_parent">
 
         <ImageView android:layout_marginTop="@dimen/space" android:layout_width="@dimen/space_x6" android:layout_height="@dimen/space_x6"
-                   android:src="@mipmap/ic_person"/>
+                   android:src="@mipmap/logo"/>
         <LinearLayout
                 android:layout_weight="1"
                 android:layout_width="0dp"

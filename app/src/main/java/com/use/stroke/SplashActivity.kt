@@ -21,13 +21,13 @@ class SplashActivity : AppCompatActivity() {
 
         progressBar = findViewById<View>(R.id.progress) as ProgressBar
         progressBar!!.progress = p
-        progressBar!!.max = 49
+        progressBar!!.max = 99
 
-        val period: Long = 50
+        val period: Long = 100
         timer.schedule(object : TimerTask() {
             override fun run() {
                 //this repeats every 100 ms
-                if (p < 50) {
+                if (p < 100) {
                     runOnUiThread {
 
                     }

@@ -61,7 +61,7 @@
 
         <TextView android:layout_gravity="center" android:textColor="@color/colorFont" android:id="@+id/step_home_persen_label"
                   android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:text="Kemungkinan Mengidap Penyakit Kanker"  android:fontFamily="@font/nunito_extrabold"
+                  android:text="Kemungkinan Mengidap Penyakit Stroke"  android:fontFamily="@font/nunito_extrabold"
                   android:textSize="@dimen/text_14"/>
         <TextView
                   android:textColor="@color/colorFont" android:layout_marginTop="@dimen/space_x2" android:layout_width="wrap_content" android:layout_height="wrap_content"
