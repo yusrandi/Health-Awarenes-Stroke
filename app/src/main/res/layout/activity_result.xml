@@ -64,7 +64,13 @@
                       android:textSize="@dimen/text_32"/>
         </RelativeLayout>
 
-        <LinearLayout android:layout_margin="@dimen/space_x5" android:layout_below="@+id/apsv_result_layout" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:id="@+id/result_layout_solusi" android:layout_centerHorizontal="true" android:layout_below="@+id/apsv_result_layout" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView   android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kemungkinan Mengidap Penyakit Stroke" android:textColor="@color/colorFont" android:fontFamily="@font/nunito_reguler" android:paddingBottom="@dimen/space" android:textSize="@dimen/text_16"/>
+            <TextView   android:id="@+id/result_solusi" android:layout_marginTop="@dimen/space" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textColor="@color/colorFont" android:fontFamily="@font/nunito_reguler" android:paddingBottom="@dimen/space" android:textSize="@dimen/text_16"/>
+            <TextView   android:layout_marginTop="@dimen/space" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="untuk informasi lebih lanjut hubungi :\nRahmawati, SKM.,M.Kes\nimma.sr85@gmail.com" android:textColor="@color/colorFont" android:paddingBottom="@dimen/space" android:textSize="@dimen/text_12" android:textStyle="bold"/>
+
+        </LinearLayout>
+        <LinearLayout android:layout_margin="@dimen/space_x5" android:layout_below="@+id/result_layout_solusi" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
             <LinearLayout android:id="@+id/result_kalkulasi"
                           android:background="@drawable/gradien" android:layout_width="match_parent"
                           android:layout_height="@dimen/space_x5_half">

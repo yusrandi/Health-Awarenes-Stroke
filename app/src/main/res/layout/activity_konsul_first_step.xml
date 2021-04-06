@@ -47,6 +47,18 @@
                         android:text="" android:textStyle="bold" android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_18"/>
 
+                <TextView
+                        android:visibility="gone"
+                        android:layout_marginStart="@dimen/space_x2"
+                        android:id="@+id/konsul_first_step_subtitle_keterangan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Adapun estimasi atau penilaian dari opsi beberapa jawaban, sebagai berikut: \nSelalu (=>1 kali/hari), Sering (3 s/d 6 kali perminggu), Kadang-kadang (1 s/d 2 kali perminggu; atau 1kali perbulan; atau 1 kali pertahun)"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_12"/>
+
+
                 <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/konsul_first_step_rv"
                         android:layout_width="match_parent"

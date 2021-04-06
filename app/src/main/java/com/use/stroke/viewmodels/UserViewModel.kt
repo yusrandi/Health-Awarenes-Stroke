@@ -53,7 +53,6 @@ class UserViewModel : ViewModel() {
         })
 
     }
-
     fun update(user: User) {
         state.value = UserState.IsLoading(true)
         api.userUpdate(user.id!!, user.name!!, user.phone, user.password)
@@ -128,7 +127,6 @@ class UserViewModel : ViewModel() {
         })
 
     }
-
     fun register(user: User, doctorId: Int) {
         state.value = UserState.IsLoading(true)
         api.register(
@@ -197,7 +195,6 @@ class UserViewModel : ViewModel() {
 
         })
     }
-
     fun getState() = state
 
 }

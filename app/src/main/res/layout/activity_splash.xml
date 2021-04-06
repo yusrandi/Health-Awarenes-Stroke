@@ -24,8 +24,7 @@
                 android:src="@mipmap/logo"/>
 
         <TextView
-                android:padding="@dimen/space_x2"
-                android:layout_margin="@dimen/space"
+                android:padding="@dimen/space"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
@@ -35,8 +34,7 @@
 
         <TextView
                 android:textStyle="italic"
-                android:padding="@dimen/space_x2"
-                android:layout_margin="@dimen/space"
+                android:padding="@dimen/space"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Primary Stroke Prevention Awareness \nApplication"

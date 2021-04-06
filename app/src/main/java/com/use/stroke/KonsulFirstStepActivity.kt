@@ -69,9 +69,8 @@ class KonsulFirstStepActivity : AppCompatActivity() {
                 Log.e(TAG, "Kat ID ${katId+1}, data Size ${dataTitle.size}")
                 if(katId+1 < dataTitle.size){
 
-
-
                     katId++
+                    if(katId == 1) konsul_first_step_subtitle_keterangan.visibility = View.VISIBLE else konsul_first_step_subtitle_keterangan.visibility = View.GONE
                     gejalaViewModel.fetchGejalasByKategori(katId+1)
                     konsul_first_step_title.text = dataTitle[katId]
                     konsul_first_step_subtitle.text = dataSubTitle[katId]

@@ -100,36 +100,84 @@ class ResultActivity : AppCompatActivity() {
     private fun calculateCFCombine(it: List<Gejala>) {
 
         var CFOld = 0.0
-        for (index in it.indices) {
-            val dataSoal = it[index]
-            val dataResponse = KonsulFirstStepActivity.itemSelectAll[index]
-            val dataJawaban = dataSoal.jawabans?.get(dataResponse)
+        var cfResult = 0.0
+        for (i in 1..3) {
+            Log.e(TAG,"====================================================== $i")
 
-            val dataSoalCFUser = KonsulFirstStepActivity.dataListCFUser[index]
-            val dataJawabanCFUser = dataSoalCFUser.cfusers?.get(dataResponse)
+            var minCFPakar = 2.0
+            var minCFUser = 2.0
+            var maxCFPakar = 0.0
+            var maxCFUser = 0.0
+            for (index in it.indices) {
+
+                val dataSoal = it[index]
+                val dataResponse = KonsulFirstStepActivity.itemSelectAll[index]
+                val dataJawaban = dataSoal.jawabans?.get(dataResponse)
+
+                val dataSoalCFUser = KonsulFirstStepActivity.dataListCFUser[index]
+                val dataJawabanCFUser = dataSoalCFUser.cfusers?.get(dataResponse)
+
+                val CF = dataJawaban!!.cf * dataJawabanCFUser!!.cf
+
+                if(i == dataSoal.kategori_id){
+                    Log.e(TAG, "Data Response $dataResponse")
+                    Log.e(TAG, "CFOld $CFOld, CF $CF")
+                    val result = (CFOld + CF) * (1 - CFOld)
+
+                    Log.e(TAG, "No $index Kat ${dataSoal.kategori_id} Soal ${dataSoal.name}, Response $dataResponse, Jawaban ${dataJawaban.jawaban.name}, CF Pakar ${dataJawaban.cf}, CF User ${dataJawabanCFUser.cf}, Result $result")
+
+//                    CFOld = result
+
+                    if(i != 3){
+                        if(dataJawaban.cf < minCFPakar) minCFPakar = dataJawaban.cf
+                        if(dataJawabanCFUser.cf < minCFUser) minCFUser = dataJawabanCFUser.cf
+
+                    }else{
+                        if(dataJawaban.cf > maxCFPakar) maxCFPakar = dataJawaban.cf
+                        if(dataJawabanCFUser.cf > maxCFUser) maxCFUser = dataJawabanCFUser.cf
+                    }
 
 
 
+                    listItem.add(
+                        ItemResult(
+                            "${index + 1}. ${dataSoal.name}",
+                            dataJawaban.jawaban.name,
+                            "CF Pakar (${dataJawaban.cf}) * CF User (${dataJawabanCFUser.cf}), Hasil $result"
+                        )
+                    )
 
-            val CF = dataJawaban!!.cf * dataJawabanCFUser!!.cf
-            Log.e(TAG, "Data Response $dataResponse")
-            Log.e(TAG, "CFOld $CFOld, CF $CF")
-            val result = (CFOld + CF) * (1 - CFOld)
 
-            Log.e(TAG, "No $index Soal ${dataSoal.name}, Response $dataResponse, Jawaban ${dataJawaban.jawaban.name}, CF Pakar ${dataJawaban.cf}, CF User ${dataJawabanCFUser.cf}, Result $result")
+                }
 
-            CFOld = result
 
-            listItem.add(
-                ItemResult(
-                    "${index + 1}. ${dataSoal.name}",
-                    dataJawaban.jawaban.name,
-                    "CF Pakar (${dataJawaban.cf}) * CF User (${dataJawabanCFUser.cf}), Hasil $result"
-                )
-            )
+            }
 
+            var newCF = 0.0
+            if (i != 3) {
+                Log.e(TAG, "Min CF Pakar $minCFPakar, Min CF User $minCFUser Kategori $i")
+                newCF = minCFPakar * minCFUser
+                if(i==2){
+                    cfResult = CFOld+newCF-(CFOld*newCF)
+                    CFOld = cfResult
+                }else{
+                    CFOld = newCF
+                }
+            } else {
+                newCF = maxCFPakar * maxCFUser
+                    cfResult = CFOld+newCF-(CFOld*newCF)
+
+                Log.e(TAG, "Max CF Pakar $maxCFPakar, Max CF User $maxCFUser Kategori $i, CF Old $CFOld, new CF $newCF")
+
+                CFOld = cfResult
+            }
+
+
+            Log.e(TAG, "CF_SA $newCF CF_RESULT $cfResult \n\n")
 
         }
+
+
         val sb = StringBuffer()
 
         for (i in 0 until KonsulFirstStepActivity.itemSelectAll.size) {
@@ -139,8 +187,12 @@ class ResultActivity : AppCompatActivity() {
             sb.append(KonsulFirstStepActivity.itemSelectAll[i])
         }
         Log.e(TAG, "Result ${CFOld * 100}")
-        initProgressArch((CFOld * 100).toInt())
-        result_tv_persen.text = "${(CFOld * 100).toInt()}%"
+        val result = (cfResult * 100).toInt()
+        initProgressArch(result)
+        result_tv_persen.text = "$result%"
+
+        if (result > 50) result_solusi.text = "Perbaiki Pola Diet, Olahraga, Jika ada faktor risiko konsumsi obat dan konsultasi ke dokter." else result_solusi.text = "Tetap Menjaga Pola diet dan olahraga, Kontrol teratur Kesehatan."
+
 
         if(Constants.getRole(this)==3){
             Constants.setResult(this, (CFOld * 100).toInt())
@@ -193,7 +245,7 @@ class ResultActivity : AppCompatActivity() {
         //AlertDialogBuilder
         val mBuilder = AlertDialog.Builder(this)
             .setView(mDialogView)
-            .setTitle("Hasil Kalkulasi")
+//            .setTitle("Hasil Kalkulasi")
         //show dialog
 
         val resultRv = mDialogView.findViewById(R.id.dialog_result_rv) as RecyclerView

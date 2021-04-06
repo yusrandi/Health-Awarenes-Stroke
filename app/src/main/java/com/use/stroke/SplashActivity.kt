@@ -21,13 +21,13 @@ class SplashActivity : AppCompatActivity() {
 
         progressBar = findViewById<View>(R.id.progress) as ProgressBar
         progressBar!!.progress = p
-        progressBar!!.max = 99
+        progressBar!!.max = 69
 
-        val period: Long = 100
+        val period: Long = 70
         timer.schedule(object : TimerTask() {
             override fun run() {
                 //this repeats every 100 ms
-                if (p < 100) {
+                if (p < 70) {
                     runOnUiThread {
 
                     }
@@ -44,12 +44,9 @@ class SplashActivity : AppCompatActivity() {
 
     private fun starApp() {
         if (Constants.getAuth(this)) {
-
             startActivity(Intent(this, StepHomeActivity::class.java)).also { finish() }
-
         } else {
             startActivity(Intent(this, AuthActivity::class.java)).also { finish() }
-
         }
 
     }

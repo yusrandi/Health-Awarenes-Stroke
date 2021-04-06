@@ -51,6 +51,7 @@ class StepFastActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
 
         val userId = Constants.getID(this)
         Log.e(TAG, "UserId $userId")
+
         laporanViewModel.fetchLaporansByUser(userId.toString())
 
         laporanViewModel.getState().observe(this, Observer {
