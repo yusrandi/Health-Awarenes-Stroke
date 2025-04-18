@@ -120,6 +120,16 @@
                       android:fontFamily="@font/nunito_extrabold"
                       android:textColor="@color/colorWhite" android:textSize="@dimen/text_16"/>
         </LinearLayout>
+        <LinearLayout android:layout_marginStart="@dimen/space_x3" android:layout_marginEnd="@dimen/space_x3" android:layout_marginTop="@dimen/space" android:id="@+id/profile_delete_account"
+                      android:background="@drawable/gradien" android:layout_width="match_parent"
+                      android:layout_height="@dimen/space_x5_half">
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:text="Hapus akun" android:gravity="center"
+                      android:fontFamily="@font/nunito_extrabold"
+                      android:textColor="@color/colorWhite" android:textSize="@dimen/text_16"/>
+        </LinearLayout>
 
     </LinearLayout>
 

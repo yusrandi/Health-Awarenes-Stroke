@@ -12,7 +12,7 @@
 
     <RelativeLayout  android:gravity="center" android:layout_width="match_parent" android:layout_height="match_parent">
 
-        <ScrollView android:layout_centerInParent="true" android:layout_alignParentTop="true" android:scrollbars="none" android:layout_width="match_parent"
+        <ScrollView android:layout_centerInParent="true"  android:layout_centerVertical="true" android:scrollbars="none" android:layout_width="match_parent"
                     android:layout_height="wrap_content">
             <LinearLayout
                     android:padding="36dp"
@@ -265,6 +265,18 @@
                         android:text="Buat akun"
                         android:textColor="#fff"/>
 
+                <TextView
+                    android:layout_marginTop="@dimen/space"
+                    android:id="@+id/auth_btn_privacy"
+                    android:textSize="@dimen/text_14"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_x5"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/my_text"
+                    android:textColor="#fff"/>
+
 
             </LinearLayout>
         </ScrollView>
@@ -279,6 +291,8 @@
                 android:layout_gravity="center"
                 android:layout_centerInParent="true"
                 app:SpinKit_Color="@color/colorAccent"/>
+
+
     </RelativeLayout>
 
 

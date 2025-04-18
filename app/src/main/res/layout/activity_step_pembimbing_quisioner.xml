@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/space_x10">
 
-        <RelativeLayout android:layout_width="@dimen/space_x5" android:layout_height="match_parent">
+        <RelativeLayout android:id="@+id/btn_back" android:layout_width="@dimen/space_x5" android:layout_height="match_parent">
             <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
                        android:src="@drawable/ic_baseline_arrow_back_24_white"/>
         </RelativeLayout>

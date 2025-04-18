@@ -11,7 +11,7 @@
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingStart="@dimen/space"
                   android:layout_width="match_parent" android:layout_height="?attr/actionBarSize">
 
-        <RelativeLayout android:layout_width="@dimen/space_x5" android:layout_height="match_parent">
+        <RelativeLayout android:id="@+id/btn_back" android:layout_width="@dimen/space_x5" android:layout_height="match_parent">
             <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
                        android:src="@drawable/ic_baseline_arrow_back_24_white"/>
         </RelativeLayout>
@@ -61,6 +61,15 @@
 
                     <TextView android:gravity="center" android:padding="@dimen/space" android:layout_centerInParent="true" android:layout_width="wrap_content"
                               android:layout_height="wrap_content" android:layout_centerVertical="true" android:text="Pola makan penderita Hipertensi untuk pencegahan Stroke"
+                              android:textStyle="bold" android:textColor="@color/colorWhite" android:textSize="@dimen/text_16"/>
+
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/menu_video_4" android:layout_marginTop="@dimen/space_x2" android:background="@drawable/gradien"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/space_x7">
+
+                    <TextView android:gravity="center" android:padding="@dimen/space" android:layout_centerInParent="true" android:layout_width="wrap_content"
+                              android:layout_height="wrap_content" android:layout_centerVertical="true" android:text="Pencegahan Multimorbiditas Penyakit tidak Menular"
                               android:textStyle="bold" android:textColor="@color/colorWhite" android:textSize="@dimen/text_16"/>
 
                 </RelativeLayout>
